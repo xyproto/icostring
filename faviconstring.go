@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"image"
 	"image/color"
-	"strconv"
 	"strings"
 
 	ico "github.com/biessek/golang-ico"
+	"github.com/g4s8/hexcolor"
 )
 
 var (
@@ -32,8 +32,8 @@ var (
 		'o': 14,
 		'p': 15,
 	}
-	errSixteen = errors.New("16 letters representing a 4x4 grayscale image ('a'..'p') are expected")
-	errColon   = errors.New("16 letters followed by (optionally): a colon, a byte, a colon, a byte, a colon and a byte was expected")
+	errTooShort = errors.New("32 letters representing a 4x4 grayscale image ('a'..'p') are expected")
+	errHash     = errors.New("32 letters followed by (optionally): a hex color like #f00")
 )
 
 // Image converts the textual representation to an .ico image, using 16 letters 'a'..'p'.
@@ -56,52 +56,45 @@ func Image(s string) ([]byte, error) {
 		r byte = 255
 		g byte
 		b byte
+		a byte = 255
 	)
 
-	if len(s) < 16 {
-		// only 4x4 grayscale images are supported!
-		return []byte{}, errSixteen
+	// only 4x4 grayscale images are supported
+
+	s = strings.ReplaceAll(s, " ", "")
+
+	if len(s) < 32 {
+		return []byte{}, errTooShort
 	}
-	if colonCount := strings.Count(s, ":"); colonCount > 0 && colonCount != 3 {
-		return []byte{}, errColon
+	if hashCount := strings.Count(s, "#"); hashCount > 1 {
+		return []byte{}, errHash
 	}
 
-	if strings.Contains(s, ":") {
-		parts := strings.SplitN(s, ":", 4)
+	if strings.Contains(s, "#") {
+		parts := strings.SplitN(s, "#", 2)
 		s = parts[0]
-		rString := parts[1]
-		gString := parts[2]
-		bString := parts[3]
-		rInt, err := strconv.Atoi(rString)
+		customColor, err := hexcolor.Parse("#" + parts[1])
 		if err != nil {
 			return []byte{}, err
 		}
-		r = byte(rInt)
-		gInt, err := strconv.Atoi(gString)
-		if err != nil {
-			return []byte{}, err
-		}
-		g = byte(gInt)
-		bInt, err := strconv.Atoi(bString)
-		if err != nil {
-			return []byte{}, err
-		}
-		b = byte(bInt)
+		r = byte(customColor.R)
+		g = byte(customColor.G)
+		b = byte(customColor.B)
+		a = byte(customColor.A)
 	} else if len(s) != 16 {
-		return []byte{}, errSixteen
+		return []byte{}, errTooShort // or long
 	}
 
 	// Create an intermediate representation
-
 	text := ""
 	for i, ru := range s {
 		if i > 0 && i%4 == 0 {
-			text += fmt.Sprintf("%s\n%s\n%s\n%s\n", line, line, line, line)
+			text += fmt.Sprintf("%s\n%s\n", line, line)
 			line = ""
 		}
-		line += fmt.Sprintf("%c%c%c%c", ru, ru, ru, ru)
+		line += fmt.Sprintf("%c%c", ru, ru)
 	}
-	text += fmt.Sprintf("%s\n%s\n%s\n%s", line, line, line, line)
+	text += fmt.Sprintf("%s\n%s", line, line)
 	line = ""
 
 	// Draw the pixels
@@ -118,7 +111,7 @@ func Image(s string) ([]byte, error) {
 			case 't': // transparent
 				m.Set(x, y, color.RGBA{0, 0, 0, 0})
 			case 'q': // color
-				m.Set(x, y, color.RGBA{r, g, b, 0xff})
+				m.Set(x, y, color.RGBA{r, g, b, a})
 			default:
 				intensity = lookupRunes[runes[x]]*16 + 15 // from 0..15 to 15..255
 				// Draw pixel to image
