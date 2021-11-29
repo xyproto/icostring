@@ -1,4 +1,5 @@
-*.ico
+test.ico
+ost.ico
 include.txt
 cmd/example/example
 cmd/genico/genico
