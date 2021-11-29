@@ -88,7 +88,6 @@ func Image(s string) ([]byte, error) {
 			line += fmt.Sprintf("%c%c", ru, ru)
 		}
 		text += fmt.Sprintf("%s\n%s", line, line)
-		line = ""
 	case 16:
 		// Create an intermediate representation
 		for i, ru := range s {
@@ -99,7 +98,6 @@ func Image(s string) ([]byte, error) {
 			line += fmt.Sprintf("%c%c%c%c", ru, ru, ru, ru)
 		}
 		text += fmt.Sprintf("%s\n%s\n%s\n%s", line, line, line, line)
-		line = ""
 	default:
 		return []byte{}, errTooShort
 	}
