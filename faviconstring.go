@@ -32,8 +32,8 @@ var (
 		'o': 14,
 		'p': 15,
 	}
-	errTooShort = errors.New("32 letters representing a 4x4 grayscale image ('a'..'p') are expected")
-	errHash     = errors.New("32 letters followed by (optionally): a hex color like #f00")
+	errTooShort = errors.New("16 or 64 letters representing a 4x4 grayscale image ('a'..'p') are expected")
+	errHash     = errors.New("16 or 64 letters followed by (optionally): a hex color like #f00")
 )
 
 // Image converts the textual representation to an .ico image, using 16 letters 'a'..'p'.
@@ -63,13 +63,6 @@ func Image(s string) ([]byte, error) {
 
 	s = strings.ReplaceAll(s, " ", "")
 
-	if len(s) < 32 {
-		return []byte{}, errTooShort
-	}
-	if hashCount := strings.Count(s, "#"); hashCount > 1 {
-		return []byte{}, errHash
-	}
-
 	if strings.Contains(s, "#") {
 		parts := strings.SplitN(s, "#", 2)
 		s = parts[0]
@@ -81,21 +74,35 @@ func Image(s string) ([]byte, error) {
 		g = byte(customColor.G)
 		b = byte(customColor.B)
 		a = byte(customColor.A)
-	} else if len(s) != 16 {
-		return []byte{}, errTooShort // or long
 	}
 
-	// Create an intermediate representation
 	text := ""
-	for i, ru := range s {
-		if i > 0 && i%8 == 0 { // 8 characters per row, before scaling up
-			text += fmt.Sprintf("%s\n%s\n", line, line)
-			line = ""
+	switch len(s) {
+	case 64:
+		// Create an intermediate representation
+		for i, ru := range s {
+			if i > 0 && i%8 == 0 { // 8 characters per row, before scaling up
+				text += fmt.Sprintf("%s\n%s\n", line, line)
+				line = ""
+			}
+			line += fmt.Sprintf("%c%c", ru, ru)
 		}
-		line += fmt.Sprintf("%c%c", ru, ru)
+		text += fmt.Sprintf("%s\n%s", line, line)
+		line = ""
+	case 16:
+		// Create an intermediate representation
+		for i, ru := range s {
+			if i > 0 && i%4 == 0 { // 4 characters per row, before scaling up
+				text += fmt.Sprintf("%s\n%s\n%s\n%s\n", line, line, line, line)
+				line = ""
+			}
+			line += fmt.Sprintf("%c%c%c%c", ru, ru, ru, ru)
+		}
+		text += fmt.Sprintf("%s\n%s\n%s\n%s", line, line, line, line)
+		line = ""
+	default:
+		return []byte{}, errTooShort
 	}
-	text += fmt.Sprintf("%s\n%s", line, line)
-	line = ""
 
 	// Draw the pixels
 	for y, line = range strings.Split(text, "\n") {
