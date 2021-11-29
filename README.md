@@ -8,6 +8,12 @@ Convert a string of 16 characters, 'a'..'p'  to a grayscale ICO file.
 
 Includes both a Go package and a command line utility.
 
+### Quick installation
+
+For Go 1.17 or later:
+
+    go install github.com/xyproto/faviconstring/cmd/genico@latest
+
 ### String format
 
 To make the string shorter, it represents a 4x4 image that will be scaled up to 16x16 when it is converted to an ICO.
@@ -49,9 +55,13 @@ func main() {
 
 ### Example images
 
-| aaaa aaaa aaaa aaaa           | qqqq qqqq qqqq qqqq               |
-| ----------------------------- | --------------------------------- |
-| ![aaaa](img/aaaaaaaaaaaa.ico) | ![qqqq](img/qqqqqqqqqqqqqqqq.ico) |
+| aaaaaaaaaaaaaaaa                  | qqqq qqqq qqqq qqqq               | ttttttaattttaatttttt                        |
+| --------------------------------- | --------------------------------- | ------------------------------------------- |
+| ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/ttttttaattttaatttttt.ico |
+
+| ttttttqqttttqqtttttt:255:255:0                    | aaaafqqfaqqapppp:255:128:80                 |
+| ------------------------------------------------- | ------------------------------------------- |
+| ![yellow](img/ttttttqqttttqqtttttt:255:255:0.ico) | ![art](img/aaaafqqfaqqapppp:255:128:80.ico) |
 
 ### General info
 
