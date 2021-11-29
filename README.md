@@ -6,9 +6,9 @@ Includes both a Go package and a command line utility.
 
 ### Example images
 
-| aaaaaaaaaaaaaaaa                  | qqqqqqqqqqqqqqqq                  | ttttttaattttaatttttt                         | aaaafqqfaqqapppp:255:128:80                 |
+| aaaaaaaaaaaaaaaa                  | qqqqqqqqqqqqqqqq                  | ttttttaattttaatttttt                         | aaaafqqfaqqapppp:80:128:255                 |
 | --------------------------------- | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
-| ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/ttttttaattttaatttttt.ico) | ![art](img/aaaafqqfaqqapppp:255:128:80.ico) |
+| ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/ttttttaattttaatttttt.ico) | ![art](img/aaaafqqfaqqapppp:80:128:255.ico) |
 
 ### Quick installation
 
@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-    data, err := faviconstring.From("aaaafqqfaqqapppp:255:128:80")
+    data, err := faviconstring.Image("aaaafqqfaqqapppp:80:128:255")
     if err != nil {
         log.Fatalln(err)
     }
@@ -56,7 +56,7 @@ To make the string shorter, it represents a 4x4 image that will be scaled up to 
 * A red image: `qqqqqqqqqqqqqqqq` (the default custom color is red, `:255:0:0`)
 * A dark gray square surrounded by transparent pixels: `ttttttaattttaatttttt`.
 * A yellow square surrounded by transparent pixels: `ttttttqqttttqqtttttt:255:255:0`.
-* A tiny piece of art: `aaaafqqfaqqapppp:255:128:80`.
+* A tiny piece of art: `aaaafqqfaqqapppp:80:128:255`.
 
 ### General info
 
