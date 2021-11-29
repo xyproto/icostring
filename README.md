@@ -60,6 +60,6 @@ func main() {
 
 ### General info
 
-* Version: 0.0.1
+* Version: 1.0.0
 * License: BSD-3
 * Author: Alexander F. Rødseth &lt;xyproto@archlinux.org&gt;
