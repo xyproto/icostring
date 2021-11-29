@@ -1,6 +1,6 @@
 # faviconstring
 
-Convert a string of 16 characters, 'a'..'p'  to a grayscale ICO file.
+Convert a string of 16 characters (`'a'..'p'`) to a grayscale ICO file, with one optional color.
 
 Includes both a Go package and a command line utility.
 
