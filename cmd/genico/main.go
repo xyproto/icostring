@@ -5,11 +5,11 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/xyproto/faviconstring"
+	"github.com/xyproto/icostring"
 )
 
 func writeImage(imageString, filename string) error {
-	data, err := faviconstring.Image(imageString)
+	data, err := icostring.Image(imageString)
 	if err != nil {
 		return err
 	}

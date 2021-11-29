@@ -1,4 +1,4 @@
-module github.com/xyproto/faviconstring
+module github.com/xyproto/icostring
 
 go 1.17
 

@@ -1,4 +1,4 @@
-# faviconstring
+# ICOstring
 
 Convert a string of **16** or **64** characters (`'a'..'p'`) to a grayscale ICO file, with one optional color.
 
@@ -14,7 +14,7 @@ Includes both a Go package and a command line utility.
 
 For Go 1.17 or later:
 
-    go install github.com/xyproto/faviconstring/cmd/genico@latest
+    go install github.com/xyproto/icostring/cmd/genico@latest
 
 ### Example use
 
@@ -25,11 +25,11 @@ import (
     "io/ioutil"
     "log"
 
-    "github.com/xyproto/faviconstring"
+    "github.com/xyproto/icostring"
 )
 
 func main() {
-    data, err := faviconstring.Image("aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f")
+    data, err := icostring.Image("aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f")
     if err != nil {
         log.Fatalln(err)
     }

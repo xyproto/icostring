@@ -1,4 +1,4 @@
-package faviconstring
+package icostring
 
 import (
 	"io/ioutil"

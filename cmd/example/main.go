@@ -4,11 +4,11 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/xyproto/faviconstring"
+	"github.com/xyproto/icostring"
 )
 
 func main() {
-	data, err := faviconstring.Image("aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f")
+	data, err := icostring.Image("aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f")
 	if err != nil {
 		log.Fatalln(err)
 	}
