@@ -48,15 +48,15 @@ func main() {
 #### Example image strings
 
 * A dark image: `aaaaaaaaaaaaaaaa` (`a` is the darkest grayscale color)
-* A blue image: `qqqqqqqqqqqqqqqq:0:0:255`. (`q` is the custom color that is optionally defined at the end of the string).
-* A red image: `qqqqqqqqqqqqqqqq` (the default custom color is red, `:255:0:0`)
+* A blue image: `qqqqqqqqqqqqqqqq#00f`. (`q` is the custom color that is optionally defined at the end of the string).
+* A red image: `qqqqqqqqqqqqqqqq` (the default custom color is red, `#f00`)
 * A dark gray square surrounded by transparent pixels: `tttttaattaattttt`.
-* A yellow square surrounded by transparent pixels: `tttttqqttqqttttt:255:255:0`.
-* A tiny piece of art: `aaaafqqfaqqapppp:80:128:255`.
+* A yellow square surrounded by transparent pixels: `tttttqqttqqttttt#ff0`.
+* A tiny piece of art: `aaaafqqfaqqapppp#5080ff`.
 
 ### Example images
 
-| aaaaaaaaaaaaaaaa                  | qqqqqqqqqqqqqqqq                  | tttttaattaattttt                             | aaaafqqfaqqapppp:80:128:255                 |
+| aaaaaaaaaaaaaaaa                  | qqqqqqqqqqqqqqqq                  | tttttaattaattttt                             | aaaafqqfaqqapppp#5080ff                     |
 | --------------------------------- | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
 | ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/tttttaattaattttt.ico)     | ![art](img/aaaafqqfaqqapppp.ico)            |
 
