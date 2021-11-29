@@ -1,6 +1,6 @@
 # faviconstring
 
-Convert a string of 16 or 64 characters (`'a'..'p'`) to a grayscale ICO file, with one optional color.
+Convert a string of **16** or **64** characters (`'a'..'p'`) to a grayscale ICO file, with one optional color.
 
 Includes both a Go package and a command line utility.
 
@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-    data, err := faviconstring.Image("aaaafqqfaqqapppp#5080FF")
+    data, err := faviconstring.Image("aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f")
     if err != nil {
         log.Fatalln(err)
     }
