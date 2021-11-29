@@ -34,10 +34,10 @@ var (
 	}
 )
 
-// Create converts the textual representation to an .ico image, using 16 letters 'a'..'p'.
-// The string can be followed by a colon spearated color, like :255:0:0 for red, or :0:0:255 for blue.
-// The letter 't' is transparent.
-func From(s string) ([]byte, error) {
+// Image converts the textual representation to an .ico image, using 16 letters 'a'..'p'.
+// The string can be followed by a colon spearated color, like :255:0:0 for red, or :0:0:255 for blue,
+// which defines a custom color. The custom color can be used with 'q'. The letter 't' is transparency.
+func Image(s string) ([]byte, error) {
 	var (
 		// Create a new image
 		width  = 16
@@ -48,13 +48,12 @@ func From(s string) ([]byte, error) {
 		x, y      int
 		line      string
 		intensity byte
-		ru        rune
 		runes     []rune
 
 		// Default 'q' color.
 		r byte = 255
-		g byte = 0
-		b byte = 0
+		g byte
+		b byte
 	)
 
 	if len(s) < 16 {
@@ -71,21 +70,21 @@ func From(s string) ([]byte, error) {
 		rString := parts[1]
 		gString := parts[2]
 		bString := parts[3]
-		if rInt, err := strconv.Atoi(rString); err != nil {
+		rInt, err := strconv.Atoi(rString)
+		if err != nil {
 			return []byte{}, err
-		} else {
-			r = byte(rInt)
 		}
-		if gInt, err := strconv.Atoi(gString); err != nil {
+		r = byte(rInt)
+		gInt, err := strconv.Atoi(gString)
+		if err != nil {
 			return []byte{}, err
-		} else {
-			g = byte(gInt)
 		}
-		if bInt, err := strconv.Atoi(bString); err != nil {
+		g = byte(gInt)
+		bInt, err := strconv.Atoi(bString)
+		if err != nil {
 			return []byte{}, err
-		} else {
-			b = byte(bInt)
 		}
+		b = byte(bInt)
 	}
 
 	// Create an intermediate representation
@@ -101,10 +100,6 @@ func From(s string) ([]byte, error) {
 	text += fmt.Sprintf("%s\n%s\n%s\n%s", line, line, line, line)
 	line = ""
 
-	// 	if verbose {
-	// 		fmt.Println(text)
-	// 	}
-
 	// Draw the pixels
 	for y, line = range strings.Split(text, "\n") {
 		if y >= 16 { // max 16x16 pixels
@@ -115,13 +110,13 @@ func From(s string) ([]byte, error) {
 			continue
 		}
 		for x = 0; x < 16; x++ { // max 16x16 pixels
-			ru = runes[x]
-			if ru == 't' { // transparent
+			switch runes[x] {
+			case 't': // transparent
 				m.Set(x, y, color.RGBA{0, 0, 0, 0})
-			} else if ru == 'q' { // color
+			case 'q': // color
 				m.Set(x, y, color.RGBA{r, g, b, 0xff})
-			} else {
-				intensity = lookupRunes[ru]*16 + 15 // from 0..15 to 15..255
+			default:
+				intensity = lookupRunes[runes[x]]*16 + 15 // from 0..15 to 15..255
 				// Draw pixel to image
 				m.Set(x, y, color.RGBA{intensity, intensity, intensity, 0xff})
 			}

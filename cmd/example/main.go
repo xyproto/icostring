@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	data, err := faviconstring.From("aaaafqqfaqqapppp:255:0:0")
+	data, err := faviconstring.Image("aaaafqqfaqqapppp:255:0:0")
 	if err != nil {
 		log.Fatalln(err)
 	}

@@ -9,7 +9,7 @@ import (
 )
 
 func writeImage(imageString, filename string) error {
-	data, err := faviconstring.From(imageString)
+	data, err := faviconstring.Image(imageString)
 	if err != nil {
 		return err
 	}

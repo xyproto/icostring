@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-func TestFrom(t *testing.T) {
-	data, err := From("aaaafqqfaqqapppp:255:0:0")
+func TestImage(t *testing.T) {
+	data, err := Image("aaaafqqfaqqapppp:255:0:0")
 	if err != nil {
 		t.Error(err)
 	}
