@@ -1,6 +1,6 @@
 # faviconstring
 
-Convert a string of 16 characters (`'a'..'p'`) to a grayscale ICO file, with one optional color.
+Convert a string of 16 or 64 characters (`'a'..'p'`) to a grayscale ICO file, with one optional color.
 
 Includes both a Go package and a command line utility.
 
@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-    data, err := faviconstring.Image("aaaafqqfaqqapppp:80:128:255")
+    data, err := faviconstring.Image("aaaafqqfaqqapppp#5080FF")
     if err != nil {
         log.Fatalln(err)
     }
@@ -41,9 +41,9 @@ func main() {
 
 ### String format
 
-The string represents a 4x4 image that will be scaled up to 16x16 when it is converted to an ICO. It's a maximum of 28 characters long.
-
-* The first four letters is the top row, the four next letters is the second row etc.
+* The string represents a 4x4 or 8x8 image that will be scaled up to 16x16 when it is converted to an ICO.
+* The string is a maximum of 73  characters long (letters + hex color). Spaces are ignored.
+* The first 4 or 8 letters is the top row, the next series of letters is the second row etc.
 * `a` is the darkest grayscale color, `b` is a bit lighter, `c` is a bit lighter than that etc.
 * `p` is the lightest grayscale color.
 * `q` is a custom color that is either red, or defined at the end of the string with three bytes separated by `:`, like this: `:255:255:255`.
