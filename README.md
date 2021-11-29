@@ -6,13 +6,9 @@ Includes both a Go package and a command line utility.
 
 ### Example images
 
-| aaaaaaaaaaaaaaaa                  | qqqq qqqq qqqq qqqq               | ttttttaattttaatttttt                         |
-| --------------------------------- | --------------------------------- | -------------------------------------------- |
-| ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/ttttttaattttaatttttt.ico) |
-
-| ttttttqqttttqqtttttt:255:255:0                    | aaaafqqfaqqapppp:255:128:80                 |
-| ------------------------------------------------- | ------------------------------------------- |
-| ![yellow](img/ttttttqqttttqqtttttt:255:255:0.ico) | ![art](img/aaaafqqfaqqapppp:255:128:80.ico) |
+| aaaaaaaaaaaaaaaa                  | qqqqqqqqqqqqqqqq                  | ttttttaattttaatttttt                         | aaaafqqfaqqapppp:255:128:80                 |
+| --------------------------------- | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
+| ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/ttttttaattttaatttttt.ico) | ![art](img/aaaafqqfaqqapppp:255:128:80.ico) |
 
 ### Quick installation
 
