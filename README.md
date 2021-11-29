@@ -1,14 +1,10 @@
-# ICOstring
+# Icostring
 
-Convert a string of **16** or **64** characters (`'a'..'p'`) to a grayscale ICO file, with one optional color.
+Generate a file in the ICO format from a short string of either **16** or **64** characters (`'a'..'p'`) + an optional hex encoded color value.
 
-Includes both a Go package and a command line utility.
+The idea is that this can be used for quickly specifying a `favicon.ico` file when writing web applications in Go.
 
-### Example images
-
-| aaaaaaaaaaaaaaaa                  | qqqqqqqqqqqqqqqq                  | tttttaattaattttt                             | aaaafqqfaqqapppp:80:128:255                 |
-| --------------------------------- | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
-| ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/tttttaattaattttt.ico)     | ![art](img/aaaafqqfaqqapppp.ico)            |
+Both a package that is useable from Go and a standalone `genico` command line utility are included.
 
 ### Quick installation
 
@@ -57,6 +53,12 @@ func main() {
 * A dark gray square surrounded by transparent pixels: `tttttaattaattttt`.
 * A yellow square surrounded by transparent pixels: `tttttqqttqqttttt:255:255:0`.
 * A tiny piece of art: `aaaafqqfaqqapppp:80:128:255`.
+
+### Example images
+
+| aaaaaaaaaaaaaaaa                  | qqqqqqqqqqqqqqqq                  | tttttaattaattttt                             | aaaafqqfaqqapppp:80:128:255                 |
+| --------------------------------- | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
+| ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/tttttaattaattttt.ico)     | ![art](img/aaaafqqfaqqapppp.ico)            |
 
 ### General info
 
