@@ -24,13 +24,6 @@ func main() {
 	var err error
 	argCount := len(os.Args) - 1
 	switch argCount {
-	case 5:
-		imageString := os.Args[1] + ":" + os.Args[2] + ":" + os.Args[3] + ":" + os.Args[4]
-		filename := os.Args[5]
-		err = writeImage(imageString, filename)
-	case 4:
-		imageString := os.Args[1] + ":" + os.Args[2] + ":" + os.Args[3] + ":" + os.Args[4]
-		err = writeImage(imageString, "-")
 	case 2:
 		imageString := os.Args[1]
 		filename := os.Args[2]
@@ -39,9 +32,10 @@ func main() {
 		imageString := os.Args[1]
 		err = writeImage(imageString, "-")
 	default:
-		fmt.Fprintln(os.Stderr, "syntax: genico IMAGESTRING RED GREEN BLUE FILENAME")
-		fmt.Fprintln(os.Stderr, "example: genico aaaafqqfaqqapppp 255 0 0 test.ico")
-		fmt.Fprintln(os.Stderr, "a-p is grayscale, q is the color and t is transparent")
+		fmt.Fprintln(os.Stderr, "Syntax: genico IMAGESTRING FILENAME")
+		fmt.Fprintln(os.Stderr, "Example: genico aaaafqqfaqqapppp favicon.ico")
+		fmt.Fprintln(os.Stderr, "Example: genico aaaafqqfaqqapppp#08f favicon.ico")
+		fmt.Fprintln(os.Stderr, "a-p is grayscale, q is the custom suffix color and t is transparent. Spaces are ignored.")
 		os.Exit(1)
 	}
 	if err != nil {
