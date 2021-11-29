@@ -88,7 +88,7 @@ func Image(s string) ([]byte, error) {
 	// Create an intermediate representation
 	text := ""
 	for i, ru := range s {
-		if i > 0 && i%4 == 0 {
+		if i > 0 && i%8 == 0 { // 8 characters per row, before scaling up
 			text += fmt.Sprintf("%s\n%s\n", line, line)
 			line = ""
 		}
