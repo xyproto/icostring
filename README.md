@@ -2,33 +2,23 @@
 
 Convert a string of 16 characters, 'a'..'p'  to a grayscale ICO file.
 
-* 'a' is darkest, 'p' is brightest.
-* 'q' is also allowed, to set a custom color (provided with an r, g and b byte).
-* 't' is transparent.
-
 Includes both a Go package and a command line utility.
+
+### Example images
+
+| aaaaaaaaaaaaaaaa                  | qqqq qqqq qqqq qqqq               | ttttttaattttaatttttt                         |
+| --------------------------------- | --------------------------------- | -------------------------------------------- |
+| ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/ttttttaattttaatttttt.ico) |
+
+| ttttttqqttttqqtttttt:255:255:0                    | aaaafqqfaqqapppp:255:128:80                 |
+| ------------------------------------------------- | ------------------------------------------- |
+| ![yellow](img/ttttttqqttttqqtttttt:255:255:0.ico) | ![art](img/aaaafqqfaqqapppp:255:128:80.ico) |
 
 ### Quick installation
 
 For Go 1.17 or later:
 
     go install github.com/xyproto/faviconstring/cmd/genico@latest
-
-### String format
-
-To make the string shorter, it represents a 4x4 image that will be scaled up to 16x16 when it is converted to an ICO.
-
-This string `aaaaaaaaaaaaaaaa` will be converted to an image where every pixel is dark.
-
-For a completely blue image, use the custom color `q`, where the red, green and blue colors are appended at the end: `qqqqqqqqqqqqqqqq:0:0:255`.
-
-The default custom color is red, so this is a completely red image: `qqqqqqqqqqqqqqqq`.
-
-For a dark gray square surrounded by transparent pixels, this can be used: `ttttttaattttaatttttt`.
-
-For a yellow square surrounded by transparent pixels, this can be used: `ttttttqqttttqqtttttt:255:255:0`.
-
-For a tiny piece of art, try: `aaaafqqfaqqapppp:255:128:80`.
 
 ### Example use
 
@@ -53,15 +43,24 @@ func main() {
 }
 ```
 
-### Example images
+### String format
 
-| aaaaaaaaaaaaaaaa                  | qqqq qqqq qqqq qqqq               | ttttttaattttaatttttt                        |
-| --------------------------------- | --------------------------------- | ------------------------------------------- |
-| ![dark](img/aaaaaaaaaaaaaaaa.ico) | ![red](img/qqqqqqqqqqqqqqqq.ico)  | ![transparent](img/ttttttaattttaatttttt.ico |
+To make the string shorter, it represents a 4x4 image that will be scaled up to 16x16 when it is converted to an ICO.
 
-| ttttttqqttttqqtttttt:255:255:0                    | aaaafqqfaqqapppp:255:128:80                 |
-| ------------------------------------------------- | ------------------------------------------- |
-| ![yellow](img/ttttttqqttttqqtttttt:255:255:0.ico) | ![art](img/aaaafqqfaqqapppp:255:128:80.ico) |
+* The first four letters is the top row, the four next letters is the second row etc.
+* `a` is the darkest grayscale color, `b` is a bit lighter, `c` is a bit lighter than that etc.
+* `p` is the lightest grayscale color.
+* `q` is a custom color that is either red, or defined at the end of the string with three bytes separated by `:`, like this: `:255:255:255`.
+* `t` is transparent.
+
+#### Example image strings
+
+* A dark image: `aaaaaaaaaaaaaaaa` (`a` is the darkest grayscale color)
+* A blue image: `qqqqqqqqqqqqqqqq:0:0:255`. (`q` is the custom color that is optionally defined at the end of the string).
+* A red image: `qqqqqqqqqqqqqqqq` (the default custom color is red, `:255:0:0`)
+* A dark gray square surrounded by transparent pixels: `ttttttaattttaatttttt`.
+* A yellow square surrounded by transparent pixels: `ttttttqqttttqqtttttt:255:255:0`.
+* A tiny piece of art: `aaaafqqfaqqapppp:255:128:80`.
 
 ### General info
 
