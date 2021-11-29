@@ -41,7 +41,7 @@ func main() {
 
 ### String format
 
-To make the string shorter, it represents a 4x4 image that will be scaled up to 16x16 when it is converted to an ICO.
+The string represents a 4x4 image that will be scaled up to 16x16 when it is converted to an ICO. It's a maximum of 28 characters long.
 
 * The first four letters is the top row, the four next letters is the second row etc.
 * `a` is the darkest grayscale color, `b` is a bit lighter, `c` is a bit lighter than that etc.
@@ -54,8 +54,8 @@ To make the string shorter, it represents a 4x4 image that will be scaled up to 
 * A dark image: `aaaaaaaaaaaaaaaa` (`a` is the darkest grayscale color)
 * A blue image: `qqqqqqqqqqqqqqqq:0:0:255`. (`q` is the custom color that is optionally defined at the end of the string).
 * A red image: `qqqqqqqqqqqqqqqq` (the default custom color is red, `:255:0:0`)
-* A dark gray square surrounded by transparent pixels: `ttttttaattttaatttttt`.
-* A yellow square surrounded by transparent pixels: `ttttttqqttttqqtttttt:255:255:0`.
+* A dark gray square surrounded by transparent pixels: `tttttaattaattttt`.
+* A yellow square surrounded by transparent pixels: `tttttqqttqqttttt:255:255:0`.
 * A tiny piece of art: `aaaafqqfaqqapppp:80:128:255`.
 
 ### General info
