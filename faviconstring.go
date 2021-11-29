@@ -28,10 +28,12 @@ var (
 		'k': 10,
 		'l': 11,
 		'm': 12,
-		'n': 15,
-		'o': 13,
-		'p': 14,
+		'n': 13,
+		'o': 14,
+		'p': 15,
 	}
+	errSixteen = errors.New("16 letters representing a 4x4 grayscale image ('a'..'p') are expected")
+	errColon   = errors.New("16 letters followed by (optionally): a colon, a byte, a colon, a byte, a colon and a byte was expected")
 )
 
 // Image converts the textual representation to an .ico image, using 16 letters 'a'..'p'.
@@ -58,10 +60,10 @@ func Image(s string) ([]byte, error) {
 
 	if len(s) < 16 {
 		// only 4x4 grayscale images are supported!
-		return []byte{}, errors.New("16 letters representing a 4x4 grayscale image ('a'..'p') are expected")
+		return []byte{}, errSixteen
 	}
 	if colonCount := strings.Count(s, ":"); colonCount > 0 && colonCount != 3 {
-		return []byte{}, errors.New("16 letters followed by (optionally): a colon, a byte, a colon, a byte, a colon and a byte was expected")
+		return []byte{}, errColon
 	}
 
 	if strings.Contains(s, ":") {
@@ -85,6 +87,8 @@ func Image(s string) ([]byte, error) {
 			return []byte{}, err
 		}
 		b = byte(bInt)
+	} else if len(s) != 16 {
+		return []byte{}, errSixteen
 	}
 
 	// Create an intermediate representation
