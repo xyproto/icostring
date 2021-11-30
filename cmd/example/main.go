@@ -1,18 +1,26 @@
 package main
 
 import (
-	"io/ioutil"
 	"log"
+	"os"
 
 	"github.com/xyproto/icostring"
 )
 
-func main() {
-	data, err := icostring.Image("aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f")
+func WriteImage(filename, icoString string) error {
+	f, err := os.Create(filename)
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
-	if err := ioutil.WriteFile("favicon.ico", data, 0644); err != nil {
+	if err := icostring.WriteImage(f, icoString); err != nil {
+		return err
+	}
+	return f.Close()
+}
+
+func main() {
+	// "aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f" is also a valid icostring
+	if err := WriteImage("favicon.ico", "pppppppppppppppp"); err != nil {
 		log.Fatalln(err)
 	}
 }
