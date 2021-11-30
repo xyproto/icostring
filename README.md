@@ -18,18 +18,26 @@ For Go 1.17 or later:
 package main
 
 import (
-    "io/ioutil"
     "log"
+    "os"
 
     "github.com/xyproto/icostring"
 )
 
-func main() {
-    data, err := icostring.Image("aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f")
+func WriteImage(filename, icoString string) error {
+    f, err := os.Create(filename)
     if err != nil {
-        log.Fatalln(err)
+        return err
     }
-    if err := ioutil.WriteFile("favicon.ico", data, 0644); err != nil {
+    if err := icostring.WriteImage(f, icoString); err != nil {
+        return err
+    }
+    return f.Close()
+}
+
+func main() {
+    // "aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f" is also a valid icostring
+    if err := WriteImage("favicon.ico", "pppppppppppppppp"); err != nil {
         log.Fatalln(err)
     }
 }
@@ -42,7 +50,7 @@ func main() {
 * The first 4 or 8 characters is the top row, the next series of letters is the second row etc.
 * `a` is the darkest grayscale color, `b` is a bit lighter etc.
 * `p` is the lightest grayscale color.
-* `q` is a custom color that is either red, or defined at the end of the string with three bytes separated by `:`, like this: `:255:255:255`.
+* `q` is a custom color that is either red, or defined at the end of the string with a hex color, either with or without alpha, like `#ffffffff` or `#fff`.
 * `t` is transparent.
 
 #### Example image strings
