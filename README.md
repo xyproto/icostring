@@ -63,7 +63,7 @@ Here `aaaafqqfaqqapppp` is used, but `aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqq
 * A dark image: `aaaaaaaaaaaaaaaa` (`a` is the darkest grayscale color)
 * A blue image: `qqqqqqqqqqqqqqqq#00f`. (`q` is the custom color that is optionally defined at the end of the string).
 * A red image: `qqqqqqqqqqqqqqqq` (the default custom color is red, `#f00`)
-* A dark gray square surrounded by transparent pixels: `tttttaattaattttt`.
+* A dark gray square surrounded by transparent pixels: `tttt taat taat tttt`.
 * A yellow square surrounded by transparent pixels: `tttttqqttqqttttt#ff0`.
 * A tiny icostring logo: `aaaafqqfaqqapppp#5080ff`.
 
