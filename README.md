@@ -8,13 +8,13 @@ Generate a file in the ICO format from a short string of either **16** or **64**
 
 The idea is that this can be used for quickly specifying a `favicon.ico` file when writing web applications in Go.
 
-Both a package that is useable from Go and a standalone `genico` command line utility are included.
+Both a package that is useable from Go and a standalone `icostring` command line utility are included.
 
 ### Quick installation
 
-For Go 1.17 or later:
+If Go 1.17 or later is installed, the latest version of the `icostring` utility can be installed with:
 
-    go install github.com/xyproto/icostring/cmd/genico@latest
+    go install github.com/xyproto/icostring/cmd/icostring@latest
 
 ### Example use
 

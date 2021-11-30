@@ -32,9 +32,9 @@ func main() {
 		imageString := os.Args[1]
 		err = writeImage(imageString, "-")
 	default:
-		fmt.Fprintln(os.Stderr, "Syntax: genico IMAGESTRING FILENAME")
-		fmt.Fprintln(os.Stderr, "Example: genico aaaafqqfaqqapppp favicon.ico")
-		fmt.Fprintln(os.Stderr, "Example: genico aaaafqqfaqqapppp#08f favicon.ico")
+		fmt.Fprintln(os.Stderr, "Syntax: icostring IMAGESTRING FILENAME")
+		fmt.Fprintln(os.Stderr, "Example: icostring aaaafqqfaqqapppp favicon.ico")
+		fmt.Fprintln(os.Stderr, "Example: icostring aaaafqqfaqqapppp#08f favicon.ico")
 		fmt.Fprintln(os.Stderr, "a-p is grayscale, q is the custom suffix color and t is transparent. Spaces are ignored.")
 		os.Exit(1)
 	}

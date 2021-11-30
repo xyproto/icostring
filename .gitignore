@@ -3,4 +3,4 @@ ost.ico
 favicon.ico
 include.txt
 cmd/example/example
-cmd/genico/genico
+cmd/icostring/icostring
