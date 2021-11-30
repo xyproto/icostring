@@ -19,7 +19,6 @@ func WriteImage(filename, icoString string) error {
 }
 
 func main() {
-	// "aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f" is also a valid icostring
 	if err := WriteImage("favicon.ico", "pppppppppppppppp"); err != nil {
 		log.Fatalln(err)
 	}
