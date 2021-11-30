@@ -28,25 +28,25 @@ import (
     "github.com/xyproto/icostring"
 )
 
-func WriteImage(filename, icoString string) error {
+func WriteFile(filename, imageString string) error {
     f, err := os.Create(filename)
     if err != nil {
         return err
     }
-    if err := icostring.WriteImage(f, icoString); err != nil {
+    if err := icostring.WriteImage(f, imageString); err != nil {
         return err
     }
     return f.Close()
 }
 
 func main() {
-    if err := WriteImage("favicon.ico", "pppppppppppppppp"); err != nil {
+    if err := WriteFile("favicon.ico", "aaaafqqfaqqapppp"); err != nil {
         log.Fatalln(err)
     }
 }
 ```
 
-Here `pppppppppppppppp` is used, but `aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f` is also a valid icostring.
+Here `aaaafqqfaqqapppp` is used, but `aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqqaa aaqqqqaa pppqqppp pppppppp #08f` is also a valid icostring.
 
 ### String format
 
@@ -65,7 +65,7 @@ Here `pppppppppppppppp` is used, but `aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqq
 * A red image: `qqqqqqqqqqqqqqqq` (the default custom color is red, `#f00`)
 * A dark gray square surrounded by transparent pixels: `tttttaattaattttt`.
 * A yellow square surrounded by transparent pixels: `tttttqqttqqttttt#ff0`.
-* A tiny piece of art: `aaaafqqfaqqapppp#5080ff`.
+* A tiny icostring logo: `aaaafqqfaqqapppp#5080ff`.
 
 | aaaaaaaaaaaaaaaa                  | qqqqqqqqqqqqqqqq                  | tttttaattaattttt                             | aaaafqqfaqqapppp#5080ff                     |
 | --------------------------------- | --------------------------------- | -------------------------------------------- | ------------------------------------------- |

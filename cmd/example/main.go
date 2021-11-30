@@ -7,19 +7,19 @@ import (
 	"github.com/xyproto/icostring"
 )
 
-func WriteImage(filename, icoString string) error {
+func WriteFile(filename, imageString string) error {
 	f, err := os.Create(filename)
 	if err != nil {
 		return err
 	}
-	if err := icostring.WriteImage(f, icoString); err != nil {
+	if err := icostring.WriteImage(f, imageString); err != nil {
 		return err
 	}
 	return f.Close()
 }
 
 func main() {
-	if err := WriteImage("favicon.ico", "pppppppppppppppp"); err != nil {
+	if err := WriteFile("favicon.ico", "aaaafqqfaqqapppp"); err != nil {
 		log.Fatalln(err)
 	}
 }
