@@ -1,4 +1,8 @@
-# Icostring
+# icostring
+
+![logo](img/icostring.png)
+
+![Build](https://github.com/xyproto/icostring/workflows/Build/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/icostrin)](https://goreportcard.com/report/github.com/xyproto/icostring) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/icostring/main/LICENSE)
 
 Generate a file in the ICO format from a short string of either **16** or **64** characters (`'a'..'p', 'q' and 't'`) + an optional hex encoded color value.
 
