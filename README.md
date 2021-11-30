@@ -58,7 +58,7 @@ Here `pppppppppppppppp` is used, but `aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqq
 * `q` is a custom color that is either red, or defined at the end of the string with a hex color, either with or without alpha, like `#ffffffff` or `#fff`.
 * `t` is transparent.
 
-#### Example image strings
+#### Example short form image strings and images
 
 * A dark image: `aaaaaaaaaaaaaaaa` (`a` is the darkest grayscale color)
 * A blue image: `qqqqqqqqqqqqqqqq#00f`. (`q` is the custom color that is optionally defined at the end of the string).
@@ -66,8 +66,6 @@ Here `pppppppppppppppp` is used, but `aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqq
 * A dark gray square surrounded by transparent pixels: `tttttaattaattttt`.
 * A yellow square surrounded by transparent pixels: `tttttqqttqqttttt#ff0`.
 * A tiny piece of art: `aaaafqqfaqqapppp#5080ff`.
-
-### Example images
 
 | aaaaaaaaaaaaaaaa                  | qqqqqqqqqqqqqqqq                  | tttttaattaattttt                             | aaaafqqfaqqapppp#5080ff                     |
 | --------------------------------- | --------------------------------- | -------------------------------------------- | ------------------------------------------- |
