@@ -73,6 +73,6 @@ Here `aaaafqqfaqqapppp` is used, but `aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqq
 
 ### General info
 
-* Version: 1.1.0
+* Version: 1.2.0
 * License: BSD-3
 * Author: Alexander F. Rødseth &lt;xyproto@archlinux.org&gt;
