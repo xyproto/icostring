@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"image"
 	"image/color"
+	"io"
 	"strings"
 
 	ico "github.com/biessek/golang-ico"
@@ -36,10 +37,10 @@ var (
 	errHash     = errors.New("16 or 64 letters followed by (optionally): a hex color like #f00")
 )
 
-// Image converts the textual representation to an .ico image, using 16 letters 'a'..'p'.
-// The string can be followed by a colon spearated color, like :255:0:0 for red, or :0:0:255 for blue,
+// WriteImage converts the textual representation to an .ico image, using 16 letters 'a'..'p'.
+// The string can be followed by a hex color, like #f00 for red, #ff0000 for red or #00f for blue,
 // which defines a custom color. The custom color can be used with 'q'. The letter 't' is transparency.
-func Image(s string) ([]byte, error) {
+func WriteImage(w io.Writer, s string) error {
 	var (
 		// Create a new image
 		width  = 16
@@ -68,7 +69,7 @@ func Image(s string) ([]byte, error) {
 		s = parts[0]
 		customColor, err := hexcolor.Parse("#" + parts[1])
 		if err != nil {
-			return []byte{}, err
+			return err
 		}
 		r = byte(customColor.R)
 		g = byte(customColor.G)
@@ -99,7 +100,7 @@ func Image(s string) ([]byte, error) {
 		}
 		text += fmt.Sprintf("%s\n%s\n%s\n%s", line, line, line, line)
 	default:
-		return []byte{}, errTooShort
+		return errTooShort
 	}
 
 	// Draw the pixels
@@ -125,8 +126,16 @@ func Image(s string) ([]byte, error) {
 		}
 	}
 
+	// Encode and write the image to the supplied io.Writer
+	return ico.Encode(w, m)
+}
+
+// Image converts the textual representation to an .ico image, using 16 letters 'a'..'p'.
+// The string can be followed by a hex color, like #f00 for red, #ff0000 for red or #00f for blue,
+// which defines a custom color. The custom color can be used with 'q'. The letter 't' is transparency.
+func Image(s string) ([]byte, error) {
 	var buf bytes.Buffer
-	if err := ico.Encode(&buf, m); err != nil {
+	if err := WriteImage(&buf, s); err != nil {
 		return []byte{}, nil
 	}
 	return buf.Bytes(), nil
