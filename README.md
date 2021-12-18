@@ -6,9 +6,9 @@
 
 Generate a file in the ICO format from a short string of either **16** or **64** characters (`'a'..'p', 'q' and 't'`) + an optional hex encoded color value.
 
-The idea is that this can be used for quickly specifying a `favicon.ico` file when writing web applications in Go.
+The idea is that this can be used for quickly specifying a `favicon.ico` file, either with a command line utility, or when writing web applications in Go.
 
-Both a package that is useable from Go and a standalone `icostring` command line utility are included.
+Both a Go module and the `icostring` utility are provided.
 
 ### Quick installation
 
