@@ -53,8 +53,7 @@ Here `aaaafqqfaqqapppp` is used, but `aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqq
 * The string represents a 4x4 or 8x8 image that will be scaled up to 16x16 when it is converted to an ICO.
 * The string is a maximum of 73 characters long (letters + hex color). Spaces are ignored.
 * The first 4 or 8 characters is the top row, the next series of letters is the second row etc.
-* `a` is the darkest grayscale color, `b` is a bit lighter etc.
-* `p` is the lightest grayscale color.
+* `a` is the darkest grayscale color, `b` is a bit lighter etc. up to `p` which is the lightest grayscale color.
 * `q` is a custom color that is either red, or defined at the end of the string with a hex color, either with or without alpha, like `#ffffffff` or `#fff`.
 * `t` is transparent.
 
