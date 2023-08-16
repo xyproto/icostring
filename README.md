@@ -2,9 +2,7 @@
 
 ![logo](img/icostring.png)
 
-
-
-[![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/icostring)](https://goreportcard.com/report/github.com/xyproto/icostring) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/icostring/main/LICENSE)
+[![Build](https://github.com/xyproto/icostring/actions/workflows/build.yml/badge.svg)](https://github.com/xyproto/icostring/actions/workflows/build.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/icostring)](https://goreportcard.com/report/github.com/xyproto/icostring) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/icostring/main/LICENSE)
 
 Generate a file in the ICO format from a short string of either **16** or **64** characters (`'a'..'p', 'q' and 't'`) + an optional hex encoded color value, for example `tttttqqttqqttttt`.
 
