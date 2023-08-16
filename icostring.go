@@ -9,7 +9,7 @@ import (
 	"io"
 	"strings"
 
-	ico "github.com/biessek/golang-ico"
+	ico "github.com/dkua/go-ico"
 	"github.com/g4s8/hexcolor"
 )
 
