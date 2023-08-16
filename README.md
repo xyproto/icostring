@@ -2,7 +2,9 @@
 
 ![logo](img/icostring.png)
 
-![Build](https://github.com/xyproto/icostring/workflows/Build/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/icostring)](https://goreportcard.com/report/github.com/xyproto/icostring) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/icostring/main/LICENSE)
+
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/icostring)](https://goreportcard.com/report/github.com/xyproto/icostring) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/icostring/main/LICENSE)
 
 Generate a file in the ICO format from a short string of either **16** or **64** characters (`'a'..'p', 'q' and 't'`) + an optional hex encoded color value, for example `tttttqqttqqttttt`.
 
@@ -12,7 +14,7 @@ Both a Go module and the `icostring` utility are provided.
 
 ### Quick installation
 
-If Go 1.17 or later is installed, the latest version of the `icostring` utility can be installed with:
+For Go 1.21, the latest version of the `icostring` utility can be installed with:
 
     go install github.com/xyproto/icostring/cmd/icostring@latest
 
@@ -72,6 +74,6 @@ Here `aaaafqqfaqqapppp` is used, but `aaaaaaaa aaaqqaaa ffqqqqff ffqqqqff aaqqqq
 
 ### General info
 
-* Version: 1.2.0
+* Version: 1.2.1
 * License: BSD-3
 * Author: Alexander F. Rødseth &lt;xyproto@archlinux.org&gt;
